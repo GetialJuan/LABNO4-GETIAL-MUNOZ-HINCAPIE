@@ -1,4 +1,4 @@
-----##ESTO DEBE QUITARSE A LAHORA DE LA ENTREGA
+----##ESTO DEBE QUITARSE A LA HORA DE LA ENTREGA
 -- Create DataBase
 CREATE DATABASE oficinaregistro
     WITH
@@ -12,7 +12,7 @@ CREATE DATABASE oficinaregistro
 
 -- Conecct to oficinaregistro db
 \c oficinaregistro
-----##ESTO DEBE QUITARSE A LAHORA DE LA ENTREGA
+----##ESTO DEBE QUITARSE A LA HORA DE LA ENTREGA
 
 -- (a) Serial que empieza en 7488 y aumenta en 168 
 CREATE SEQUENCE seq_students
