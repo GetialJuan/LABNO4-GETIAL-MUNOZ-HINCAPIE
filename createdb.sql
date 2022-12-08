@@ -53,8 +53,8 @@ CREATE TABLE course_offering (
     sec_id INTEGER,
     year INTEGER,
     semester INTEGER,
-    time INTEGER NOT NULL,
-    classroom INTEGER NOT NULL,
+    time VARCHAR(100) NOT NULL,
+    classroom VARCHAR(100) NOT NULL,
     PRIMARY KEY(course_id, sec_id, year, semester),
     CONSTRAINT Pk_course_course_offering
         FOREIGN KEY (course_id) REFERENCES course(course_id)
@@ -72,7 +72,11 @@ CREATE TABLE enrols (
     semester INTEGER,
     year INTEGER,
     grade grade_type,
-    PRIMARY KEY(student_id, course_id, sec_id, semester, year)
+    PRIMARY KEY(student_id, course_id, sec_id, semester, year),
+    CONSTRAINT pk_student_enrols
+        FOREIGN KEY(student_id) REFERENCES student(student_id),
+    CONSTRAINT pk_course_enrols
+        FOREIGN KEY(course_id) REFERENCES course(course_id)
 );
 
 -- Table teaches
