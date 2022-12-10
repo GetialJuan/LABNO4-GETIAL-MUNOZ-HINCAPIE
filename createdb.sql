@@ -60,9 +60,6 @@ CREATE TABLE course_offering (
         FOREIGN KEY (course_id) REFERENCES course(course_id)
 );
 
--- (c) gradeType
-CREATE DOMAIN grade_type AS NUMERIC(3,2)
-    CHECK(VALUE > 1.00 AND VALUE < 5.00);
 
 -- Table enrols
 CREATE TABLE enrols (
@@ -71,7 +68,7 @@ CREATE TABLE enrols (
     sec_id INTEGER,
     semester INTEGER,
     year INTEGER,
-    grade grade_type,
+    grade NUMERIC(3,2),
     PRIMARY KEY(student_id, course_id, sec_id, semester, year),
     CONSTRAINT pk_student_enrols
         FOREIGN KEY(student_id) REFERENCES student(student_id),
