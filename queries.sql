@@ -13,6 +13,9 @@ WHERE student.student_id = enrols.student_id AND enrols.course_id = 837873;
 
 -- (d) vista con los estudaintes con nostas mas altas por cada semestre 
 --      entre 1900 y 2018
---CREATE VIEW better_students AS
-SELECT semester, MAX(grade) AS max_nota 
-FROM enrols group by semester;
+CREATE VIEW better_students AS
+SELECT student_id, rest.semester, rest.max FROM
+    (SELECT semester, MAX(grade)
+        FROM (SELECT student_id, semester, grade FROM enrols WHERE year < 2018 AND year > 1900)
+            AS test GROUP BY  semester)
+                AS rest JOIN enrols ON enrols.semester = rest.semester AND enrols.grade = rest.max;
