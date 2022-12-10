@@ -43,3 +43,32 @@ CREATE TRIGGER alter_grade_enrols
     AFTER UPDATE ON enrols
     FOR EACH ROW 
     EXECUTE FUNCTION alter_grade_enrols_function();
+
+-- b)Cree un procedimiento create_teaches que automáticamente agregue un registro a teaches. 
+-- Este recibe dos argumentos un identificador de instructor instructor_id y un identificador
+-- de course_id. Se asume que ambos existen en la base de datos. 
+
+-- i) Este procedimiento debe verificar que el curso exista en la oferta de cursos.
+
+-- ii) Use curse_id, sec_id, year y semester de la oferta de curso y instructor_id el para
+-- insertar en teaches.
+CREATE PROCEDURE create_teaches(instructor_id INTEGER, course_id INTEGER)
+LANGUAGE 'plpgsql'
+AS $$
+DECLARE
+	a INTEGER;
+    b INTEGER;
+    c INTEGER;
+BEGIN 
+    IF EXISTS(SELECT * FROM course WHERE course.course_id = create_teaches.course_id) THEN
+        SELECT sec_id FROM course JOIN course_offering ON create_teaches.course_id = course_offering.course_id INTO a;
+        SELECT semester FROM course JOIN course_offering ON create_teaches.course_id = course_offering.course_id INTO b;
+        SELECT year FROM course JOIN course_offering ON create_teaches.course_id = course_offering.course_id INTO c;
+        INSERT INTO teaches(course_id,sec_id,semester,year,instructor_id)
+            VALUES (create_teaches.course_id,a,b,c,create_teaches.instructor_id);
+		COMMIT;
+    ELSE
+        RAISE NOTICE 'Course % not found', create_teaches.course_id;
+	END IF;
+END
+$$;
