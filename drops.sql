@@ -23,6 +23,3 @@ DROP TABLE student;
 --Eliminacion de secuencias
 DROP SEQUENCE seq_students;
 DROP SEQUENCE seq_course;
-
---Eliminar Base de datos
-DROP DATABASE oficinaregistro;
