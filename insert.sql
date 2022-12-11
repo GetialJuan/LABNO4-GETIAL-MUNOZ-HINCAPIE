@@ -1,5 +1,3 @@
--- Accedemos a la db
-\c oficinaregistro
 
 -- insertar valores a student
 INSERT INTO student (name, program)

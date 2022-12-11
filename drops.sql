@@ -11,6 +11,9 @@ DROP TRIGGER valor_incorecto_enrols_grade ON enrols;
 -- Elimina funcion del trigger valor_incorecto_enrols_grade
 DROP FUNCTION exception_enrols_grade;
 
+-- Elimina vista (Ejercicio 3.d)
+DROP VIEW better_students;
+
 --Eliminacion de Tablas (considerar que tablas depende de otras)
 DROP TABLE requires;
 DROP TABLE teaches;

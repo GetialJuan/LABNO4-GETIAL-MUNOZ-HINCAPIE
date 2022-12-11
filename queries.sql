@@ -1,5 +1,3 @@
--- ingresamos a la bd
-\c oficinaregistro
 
 -- (a) dept y title de los instructores
 SELECT dept,title FROM instructor;

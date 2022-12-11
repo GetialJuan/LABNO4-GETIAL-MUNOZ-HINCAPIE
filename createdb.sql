@@ -1,18 +1,3 @@
-----##ESTO DEBE QUITARSE A LA HORA DE LA ENTREGA
--- Create DataBase
-CREATE DATABASE oficinaregistro
-    WITH
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'C'
-    LC_CTYPE = 'C'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1
-    TEMPLATE template0;
-
--- Conecct to oficinaregistro db
-\c oficinaregistro
-----##ESTO DEBE QUITARSE A LA HORA DE LA ENTREGA
 
 -- (a) Serial que empieza en 7488 y aumenta en 168 
 CREATE SEQUENCE seq_students
@@ -68,7 +53,7 @@ CREATE TABLE enrols (
     sec_id INTEGER,
     semester INTEGER,
     year INTEGER,
-    grade NUMERIC(3,2),
+    grade NUMERIC(3,2), -- (c)
     PRIMARY KEY(student_id, course_id, sec_id, semester, year),
     CONSTRAINT pk_student_enrols
         FOREIGN KEY(student_id) REFERENCES student(student_id),
